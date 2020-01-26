@@ -1,0 +1,22 @@
+on: push
+name: CI
+jobs:
+  frontend:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.0.0
+        
+      - name: failer
+        run: exit 1
+        
+      - name: winner
+        run: exit 0
+
+      - name: debug1
+        if: failure()
+        run: |
+          set -eux
+          curl -L -o sshst https://github.com/glassechidna/awsweb/releases/download/0.1.3/client
+          chmod +x sshst
+          ./sshst listen -t TL-01DK6K49QJHQB876SV98NK75AQ
